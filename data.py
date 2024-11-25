@@ -247,7 +247,3 @@ class DataLoader(object):
             print('Load data:', exp_eval_path)
 
         return df_eval
-
-
-if __name__ == '__main__':
-    data_loader = DataLoader(Config())

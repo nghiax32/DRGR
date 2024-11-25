@@ -210,7 +210,3 @@ class DDPGAgent(object):
         self.sync_network(self.critic, self.critic_target)
 
         return actor_loss.detach().cpu().numpy(), critic_loss.detach().cpu().numpy()
-
-
-if __name__ == '__main__':
-    pass

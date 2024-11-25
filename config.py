@@ -18,7 +18,7 @@ class Config(object):
 
         # Recommendation system
         self.history_length = 5
-        self.top_K_list = [5, 10, 20]
+        self.top_K_list = [5, 10, 15, 20]
         self.rewards = [0, 1]
 
         # Reinforcement learning

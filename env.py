@@ -112,10 +112,3 @@ class Env(gym.Env):
         :param mode: mode
         """
         pass
-
-
-if __name__ == '__main__':
-    np.random.seed(0)
-    config = Config()
-    dataloader = DataLoader(config)
-    env = Env(config=config, rating_matrix=dataloader.load_rating_matrix(dataset_name='train'), dataset_name='train')

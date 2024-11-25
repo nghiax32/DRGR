@@ -46,7 +46,6 @@ class Evaluator(object):
 
             recall_score = 0
             ndcg_score = 0
-
             for k, item in enumerate(items_pred):
                 if item == item_true:
                     recall_score = 1
@@ -55,23 +54,13 @@ class Evaluator(object):
 
             recall_scores.append(recall_score)
             ndcg_scores.append(ndcg_score)
+            # checking
+            # print(f'check row\n {row}')
+            # print(f'check top_K\n {top_K}')
+            # print(f'check item_pred\n {items_pred}')
 
         avg_recall_score = float(np.mean(recall_scores))
         avg_ndcg_score = float(np.mean(ndcg_scores))
         print('%s: Recall@%d = %.4f, NDCG@%d = %.4f' % (mode.capitalize(), top_K, avg_recall_score,
                                                         top_K, avg_ndcg_score))
         return avg_recall_score, avg_ndcg_score
-
-
-if __name__ == '__main__':
-    config = Config()
-    dataloader = DataLoader(config)
-    rating_matrix_train = dataloader.load_rating_matrix(dataset_name='train')
-    df_eval_user_val = dataloader.load_eval_data(dataset_name='val', mode='user')
-    df_eval_group_val = dataloader.load_eval_data(dataset_name='val', mode='group')
-    env = Env(config=config, rating_matrix=rating_matrix_train, dataset_name='train')
-    noise = OUNoise(config=config)
-    agent = DDPGAgent(config=config, noise=noise, group2members_dict=dataloader.group2members_dict, verbose=True)
-    evaluator = Evaluator(config=config)
-    evaluator.evaluate(agent, df_eval_user_val, mode='user', top_K=5)
-    evaluator.evaluate(agent, df_eval_group_val, mode='group', top_K=5)
