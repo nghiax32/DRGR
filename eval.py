@@ -54,10 +54,6 @@ class Evaluator(object):
 
             recall_scores.append(recall_score)
             ndcg_scores.append(ndcg_score)
-            # checking
-            # print(f'check row\n {row}')
-            # print(f'check top_K\n {top_K}')
-            # print(f'check item_pred\n {items_pred}')
 
         avg_recall_score = float(np.mean(recall_scores))
         avg_ndcg_score = float(np.mean(ndcg_scores))
