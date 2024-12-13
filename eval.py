@@ -57,6 +57,6 @@ class Evaluator(object):
 
         avg_recall_score = float(np.mean(recall_scores))
         avg_ndcg_score = float(np.mean(ndcg_scores))
-        print('%s: Recall@%d = %.4f, NDCG@%d = %.4f' % (mode.capitalize(), top_K, avg_recall_score,
+        print('Recall@%d = %.4f, NDCG@%d = %.4f' % (top_K, avg_recall_score,
                                                         top_K, avg_ndcg_score))
         return avg_recall_score, avg_ndcg_score
